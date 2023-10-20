@@ -58,8 +58,8 @@ class Post(TimeStampedModel):
 
     @classmethod
     def get_latest_posts(cls, limit=6):
-        return cls.objects.order_by('-created_at')[:limit]
+        return cls.objects.order_by('-created_at')[:limit] or []
 
     @property
     def get_related_posts(self, limit=3):
-        return Post.objects.filter(tags__in=self.tags.all()).exclude(id=self.id).distinct()[:limit]
+        return Post.objects.filter(tags__in=self.tags.all()).exclude(id=self.id).distinct()[:limit] or []
