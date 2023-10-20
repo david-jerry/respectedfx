@@ -36,3 +36,4 @@ django-mathfilters==1.0.0
 django-countries==7.5.1
 django-tinymce==3.6.1
 django-htmlmin==0.11.0
+loguru==0.5.3
