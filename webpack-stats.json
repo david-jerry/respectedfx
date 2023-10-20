@@ -1,0 +1,40 @@
+{
+  "status": "done",
+  "assets": {
+    "css/project.1faa1754b99c0695300c.css": {
+      "name": "css/project.1faa1754b99c0695300c.css",
+      "path": "/home/darkcodr/www/darkcodr/respectedfx/respectedfx/static/webpack_bundles/css/project.1faa1754b99c0695300c.css",
+      "publicPath": "/static/webpack_bundles/css/project.1faa1754b99c0695300c.css"
+    },
+    "css/project.1faa1754b99c0695300c.css.map": {
+      "name": "css/project.1faa1754b99c0695300c.css.map",
+      "path": "/home/darkcodr/www/darkcodr/respectedfx/respectedfx/static/webpack_bundles/css/project.1faa1754b99c0695300c.css.map",
+      "publicPath": "/static/webpack_bundles/css/project.1faa1754b99c0695300c.css.map"
+    },
+    "js/project-129e1ac04d117f4fe56c.js": {
+      "name": "js/project-129e1ac04d117f4fe56c.js",
+      "path": "/home/darkcodr/www/darkcodr/respectedfx/respectedfx/static/webpack_bundles/js/project-129e1ac04d117f4fe56c.js",
+      "publicPath": "/static/webpack_bundles/js/project-129e1ac04d117f4fe56c.js"
+    },
+    "js/project-129e1ac04d117f4fe56c.js.map": {
+      "name": "js/project-129e1ac04d117f4fe56c.js.map",
+      "path": "/home/darkcodr/www/darkcodr/respectedfx/respectedfx/static/webpack_bundles/js/project-129e1ac04d117f4fe56c.js.map",
+      "publicPath": "/static/webpack_bundles/js/project-129e1ac04d117f4fe56c.js.map"
+    },
+    "js/vendors-129e1ac04d117f4fe56c.js": {
+      "name": "js/vendors-129e1ac04d117f4fe56c.js",
+      "path": "/home/darkcodr/www/darkcodr/respectedfx/respectedfx/static/webpack_bundles/js/vendors-129e1ac04d117f4fe56c.js",
+      "publicPath": "/static/webpack_bundles/js/vendors-129e1ac04d117f4fe56c.js"
+    }
+  },
+  "chunks": {
+    "project": [
+      "js/project-129e1ac04d117f4fe56c.js",
+      "css/project.1faa1754b99c0695300c.css"
+    ],
+    "vendors": [
+      "js/vendors-129e1ac04d117f4fe56c.js"
+    ]
+  },
+  "publicPath": "/static/webpack_bundles/"
+}
