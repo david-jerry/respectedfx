@@ -33,7 +33,7 @@ class Post(TimeStampedModel):
     URL = "URL"
 
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=250, unique=True)
+    slug = models.SlugField(max_length=250, unique=True, blank=True)
     cover_photo = models.ImageField(upload_to='blog_posts', null=True, blank=True)
     content = HTMLField()
     created_at = models.DateTimeField(auto_now_add=True)

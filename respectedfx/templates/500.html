@@ -2,9 +2,15 @@
 
 {% block title %}Server Error{% endblock title %}
 {% block content %}
-  <h1>Ooops!!! 500</h1>
-  <h3>Looks like something went wrong!</h3>
-  <p>
-    We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing.
-  </p>
+<section class="w-screen h-screen padding-x">
+  <div class="max-w-md rounded-xl bg-white/40 mx-auto top-1/2 left-1/2 transform-translate-x-1/2 transform-translate-y-1/2 bg-blur">
+    <h1 class="font-jost font-semibold text-2xl">Ooops!!! (500)</h1>
+    <p class="pt-8 text-xl">
+      Looks like something went wrong!
+    </p>
+    <p class="pt-2">
+      We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, try refreshing.
+    </p>
+  </div>
+</section>
 {% endblock content %}
