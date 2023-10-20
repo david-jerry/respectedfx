@@ -1,0 +1,317 @@
+
+{% load static i18n %}
+    {% load render_bundle from webpack_loader %}
+
+  <!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>
+      {% block title %}
+      Foreign Exchange Services in Nigeria - Respected FX
+      {% endblock title %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Experience seamless and secure foreign currency exchange at Respected FX. Get the best rates for your currency conversions and enjoy reliable service. Visit today." />
+    <meta name="author" content="Jeremiah David" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="google-site-verification" content="WTdGLB8oh9_TfqMGrxtnxEGxX-2bdISYpSxG_wxaZiQ" />
+    <meta property="og:locale" content="en_US" />
+		<meta property="og:site_name" content="Respectedfx -" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Foreign Exchange Services in Nigeria - Respected FX" />
+		<meta property="og:description" content="Experience seamless and secure foreign currency exchange at Respected FX. Get the best rates for your currency conversions and enjoy reliable service. Visit today." />
+		<meta property="og:url" content="{{request.path}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Foreign Exchange Services in Nigeria - Respected FX" />
+		<meta name="twitter:description" content="Experience seamless and secure foreign currency exchange at Respected FX. Get the best rates for your currency conversions and enjoy reliable service. Visit today." />
+
+    <link rel="icon" href="{% static 'images/favicons/favicon-180x180.png' %}" />
+    <link rel="icon" href="{% static 'images/favicons/favicon-32x32.png' %}" sizes="32x32" />
+    <link rel="icon" href="{% static 'images/favicons/favicon-192x192.png' %}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{% static 'images/favicons/favicon-180x180.png' %}" />
+    <meta name="msapplication-TileImage" content="{% static 'images/favicons/favicon-270x270.png' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Jost:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    {% block css %}
+    <!-- Your stuff: Third-party CSS libraries go here -->
+    <!-- This file stores project-specific CSS -->
+
+
+
+    {% render_bundle 'project' 'css' %}
+
+
+    {% endblock css %}
+    <!-- Le javascript
+        ================================================== -->
+    {# Placed at the top of the document so pages load faster with defer #}
+    {% block javascript %}
+
+
+    <!-- Vendor dependencies bundled as one file -->
+    {% render_bundle 'vendors' 'js' attrs='defer' %}
+
+
+    <!-- place project specific Javascript in this file -->
+
+
+    {% render_bundle 'project' 'js' attrs='defer' %}
+
+
+    {% endblock javascript %}
+    <script type="application/ld+json" class="aioseo-schema">
+			{"@context":"https:\/\/schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https:\/\/www.respectedfx.com\/#breadcrumblist","itemListElement":[{"@type":"ListItem","@id":"https:\/\/www.respectedfx.com\/#listItem","position":1,"item":{"@type":"WebPage","@id":"https:\/\/www.respectedfx.com\/","name":"Home","description":"Experience seamless and secure foreign currency exchange at Respected FX. Get the best rates for your currency conversions and enjoy reliable service. Visit today.","url":"https:\/\/www.respectedfx.com\/"},"nextItem":"https:\/\/www.respectedfx.com\/#listItem"},{"@type":"ListItem","@id":"https:\/\/www.respectedfx.com\/#listItem","position":2,"item":{"@type":"WebPage","@id":"https:\/\/www.respectedfx.com\/","name":"Respectedfx - Dealers in Foreign Exchange","description":"Experience seamless and secure foreign currency exchange at Respected FX. Get the best rates for your currency conversions and enjoy reliable service. Visit today.","url":"https:\/\/www.respectedfx.com\/"},"previousItem":"https:\/\/www.respectedfx.com\/#listItem"}]},{"@type":"Organization","@id":"https:\/\/www.respectedfx.com\/#organization","name":"Respectedfx","url":"https:\/\/www.respectedfx.com\/","sameAs":["https:\/\/web.facebook.com\/checkpoint\/block\/?next=httpsweb.facebook.comRespected-Fx-104315308867075","https:\/\/www.instagram.com\/RespectedFX\/","https:\/\/www.linkedin.com\/company\/respected-fx\/","https:\/\/api.whatsapp.com\/send\/?phone=2347043444173&text&type=phone_number&app_absent=0"],"contactPoint":{"@type":"ContactPoint","telephone":"+2348037846535","contactType":"Customer Support"}},{"@type":"WebPage","@id":"https:\/\/www.respectedfx.com\/#webpage","url":"https:\/\/www.respectedfx.com\/","name":"Foreign Exchange Services in Nigeria - Respected FX","description":"Experience seamless and secure foreign currency exchange at Respected FX. Get the best rates for your currency conversions and enjoy reliable service. Visit today.","inLanguage":"en-US","isPartOf":{"@id":"https:\/\/www.respectedfx.com\/#website"},"breadcrumb":{"@id":"https:\/\/www.respectedfx.com\/#breadcrumblist"},"image":{"@type":"ImageObject","url":"https:\/\/www.respectedfx.com\/wp-content\/uploads\/2022\/03\/1.png","@id":"https:\/\/www.respectedfx.com\/#mainImage","width":558,"height":680,"caption":"Currency Exchange Business in Kano"},"primaryImageOfPage":{"@id":"https:\/\/www.respectedfx.com\/#mainImage"},"datePublished":"2022-03-12T22:39:09+00:00","dateModified":"2023-08-02T10:05:32+00:00"},{"@type":"WebSite","@id":"https:\/\/www.respectedfx.com\/#website","url":"https:\/\/www.respectedfx.com\/","name":"Respectedfx","inLanguage":"en-US","publisher":{"@id":"https:\/\/www.respectedfx.com\/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.respectedfx.com\/?s={search_term_string}"},"query-input":"required name=search_term_string"}}]}
+		</script>
+		<!-- All in One SEO -->
+    <script src="//code.tidio.co/tscp8uvs4rur2p4evu87qsxryi9d5pjw.js"></script>
+
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  </head>
+  <body>
+
+    {% block header %}
+    {% include "snippets/navbar.html" %}
+    {% endblock header %}
+
+    <div class="container">
+      {% block content %}
+        <p>Use this document as a way to quick start any new project.</p>
+      {% endblock content %}
+    </div>
+    <!-- /container -->
+    {% block modal %}
+    <!-- buru change -->
+    {% include "snippets/form/buru.html" %}
+
+    {% include "snippets/form/fx.html" %}
+
+    {% include "snippets/form/crypto.html" %}
+    {% endblock modal %}
+
+    {% block mobile_nav %}
+    {% include "snippets/bottom.html" %}
+    {% endblock mobile_nav %}
+
+    {% block footer %}
+    {% include "snippets/footer.html" %}
+    {% endblock footer %}
+
+    {% block inline_javascript %}
+      {% comment %}
+      Script tags with only code, no src (defer by default). To run
+      with a "defer" so that you run inline code:
+      <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          /* Run whatever you want */
+        });
+      </script>
+      {% endcomment %}
+
+      <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+
+        document.getElementById('fx-transfer-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = document.getElementById('fx-transfer-form');
+
+            const formData = {
+                email: document.getElementById('transfer_email').value,
+                bank: document.getElementById('transfer_bank').value,
+                amount: form.amount.value,
+                currency: document.getElementById('transfer_currency').value,
+                to_currency: document.getElementById('transfer_to_currency').value,
+                recipient_account_number: document.getElementById('recipient_account_number').value,
+                recipient_account_name: document.getElementById('recipient_account_name').value,
+                recipient_bank_code: document.getElementById('recipient_bank_code').value,
+            };
+
+            // ... (remaining fetch code remains the same)
+            fetch('/create_internationa_transfer_request/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Make sure to define the getCookie function
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                iziToast.success({
+                  title: 'Successful Transfer Request',
+                  message: data.message,
+              });// Handle the response data as needed
+              form.innerHTML = `<div><p>${data.message}</p></div>`;
+            })
+            .catch(error => {
+                iziToast.error({
+                    title: 'Error Transfer Request',
+                    message: `There has been a problem with your fetch operation:, ${error}`,
+                });
+            });
+        });
+
+        document.getElementById('fx-local-request-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = document.getElementById('fx-local-request-form');
+
+            const formData = {
+                email: document.getElementById('local_email').value,
+                bank: document.getElementById('local_bank').value,
+                amount: form.amount.value,
+                currency: document.getElementById('local_currency').value,
+                to_currency: document.getElementById('local_to_currency').value,
+                account_number: document.getElementById('local_account-number').value,
+                account_name: document.getElementById('local_account-name').value,
+            };
+
+            // ... (remaining fetch code remains the same)
+            fetch('/create_fx_request/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Make sure to define the getCookie function
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                iziToast.success({
+                  title: 'Successful Exchange Request',
+                  message: data.message,
+              });// Handle the response data as needed
+              form.innerHTML = `<div><p>${data.message}</p></div>`;
+            })
+            .catch(error => {
+                iziToast.error({
+                    title: 'Error Exchange Request',
+                    message: `There has been a problem with your fetch operation:, ${error}`,
+                });
+            });
+        });
+
+        document.getElementById('fx-request-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = document.getElementById('fx-request-form');
+
+            const formData = {
+                email: document.getElementById('email').value,
+                bank: document.getElementById('bank').value,
+                amount: document.getElementById('amount').valueAsNumber,
+                currency: document.getElementById('currency').value,
+                to_currency: document.getElementById('to_currency').value,
+                account_number: document.getElementById('account-number').value,
+                account_name: document.getElementById('account-name').value,
+            };
+
+            // ... (remaining fetch code remains the same)
+            fetch('/create_fx_local_request/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Make sure to define the getCookie function
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+              iziToast.success({
+                  title: 'Error Exchange Request',
+                  message: data.message,
+              });
+              form.innerHTML = `<div><p>Request Successful\nMake your transfer to this account to complete your request.\n\n${data.message}</p></div>`;
+            })
+            .catch(error => {
+                iziToast.error({
+                    title: 'Successful Exchange Request',
+                    message: `There has been a problem with your fetch operation:, ${error}`,
+                });
+            });
+        });
+
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = document.getElementById('newsletter-form');
+
+            const formData = {
+                email: form.newsletter.value,
+            };
+
+            // ... (remaining fetch code remains the same)
+            fetch('/apply_news_letter/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Make sure to define the getCookie function
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                iziToast.success({
+                  title: 'Successful Subscribed',
+                  message: data.message,
+              });// Handle the response data as needed
+              form.innerHTML = `<div><p>${data.message}</p></div>`;
+            })
+            .catch(error => {
+                iziToast.error({
+                    title: 'Error Exchange Request',
+                    message: `There has been a problem with your fetch operation:, ${error}`,
+                });
+            });
+        });
+
+      </script>
+    {% endblock inline_javascript %}
+  </body>
+</html>

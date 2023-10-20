@@ -1,0 +1,39 @@
+{% load static %}
+
+<footer class="relative footer padding-x pt-20 pb-24 mb-16 md:mb-0 bg-gray-600 text-white">
+  <nav>
+    <header class="footer-title">Services</header>
+    <button onclick="buru.showModal()"  class="link link-hover">Bureau De Change</button>
+    <button onclick="fx.showModal()"  class="link link-hover">International Transfer</button>
+    <button onclick="cry.showModal()"  class="link link-hover">Crypto Exchange</button>
+  </nav>
+  <nav>
+    <header class="footer-title">Company</header>
+    <a href="/about/" class="link link-hover">About us</a>
+    <a href="/contact/" class="link link-hover">Contact</a>
+    <a href="/careers/" class="link link-hover">Jobs</a>
+    <a href="/blog/" class="link link-hover">Press kit</a>
+  </nav>
+  <nav>
+    <header class="footer-title">Legal</header>
+    <a href="/terms/" class="link link-hover">Terms of use</a>
+    <a href="/privacy/" class="link link-hover">Privacy policy</a>
+    <a href="/cookie/" class="link link-hover">Cookie policy</a>
+  </nav>
+  <form id="newsletter-form" method="post">
+    <header class="footer-title">Newsletter</header>
+    <fieldset class="form-control w-80">
+      <div class="relative">
+        <input id="newsletter" name="newsletter" type="email" placeholder="username@site.com" class="input text-white input-bordered w-full pr-16" />
+        <button type="submit" class="btn btn-warning bg-primary text-black absolute top-0 right-0 rounded-l-none">Subscribe</button>
+      </div>
+      <label for="newsletter" class="label">
+        <span class="text-white label-text">Subscribe to our newsletter and stay up to date with our market rates and financial press releases!</span>
+      </label>
+    </fieldset>
+  </form>
+
+  <section class="absolute bottom-0 left-0 right-0 bg-black/60 text-center w-screen py-4 padding-x2 flex space-3 justify-center">
+    © Copyright 2023, All Rights Reserved by RespectedFX | Built by <a href="https://www.linkedin.com/in/jeremiahedavid/" class="text-primary block mx-auto md:flex md:mx-0">EdoTech</a>
+  </section>
+</footer>

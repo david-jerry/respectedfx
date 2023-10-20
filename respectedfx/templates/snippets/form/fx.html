@@ -1,0 +1,35 @@
+<!-- foreign change -->
+<dialog id="fx" class="modal bg-blur bg-current/50">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Foreign Transfer</h3>
+    <p class="py-4">Please provide an accurate information to ensure your transaction is processed without any mishap.</p>
+    <form id="fx-transfer-form">
+      <input class="w-full text-black font-semibold text-sm" type="email" id="transfer_email" placeholder="Email" required><br><br>
+      <input type="hidden" name="to_currency" value="NGN" id="transfer_to_currency">
+      <select id="transfer_bank" required class="w-full text-black">
+          <option value="" disabled selected>Select Bank</option>
+          <!-- Add options dynamically using Django template or hardcode them here -->
+          {% for b in banks %}
+          <option value="1">{{b.bank_name}}</option>
+          {% endfor %}
+          <!-- Add more options as needed -->
+      </select><br><br>
+      <input class="w-full text-black font-semibold text-sm" type="number" id="transfer_amount" placeholder="Amount" required><br><br>
+      <select id="transfer_currency" required class="w-full text-black">
+          <option value="" disabled selected>Select Currency to Sell</option>
+          {% for r in rates %}
+          <option value="{{r.foreign_currency_name|upper}}">{{r.foreign_currency_name|upper}}</option>
+          {% endfor %}
+          <!-- Add more currency options as needed -->
+      </select><br><br>
+      <input class="w-full text-black font-semibold text-sm" type="text" name="recipient_account_number" id="recipient_account_number" placeholder="Recipient Account Number" required><br><br>
+      <input class="w-full text-black font-semibold text-sm" type="text" name="recipient_account_name" id="recipient_account_name" placeholder="Recipient Account Name" required><br><br>
+      <input class="w-full text-black font-semibold text-sm" type="text" name="recipient_bank_code" id="recipient_bank_code" placeholder="Bank Sort Code" required><br><br>
+      <button class="bg-primary/40 hover:bg-primary text-white hover:text-black  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit">Submit Request</button>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

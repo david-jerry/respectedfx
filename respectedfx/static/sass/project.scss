@@ -1,0 +1,36 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+// project specific CSS goes here
+html {
+  scroll-behavior: smooth;
+}
+
+[x-cloak] {
+  display: none;
+}
+
+body {
+  @apply bg-black overflow-x-hidden overflow-y-auto w-screen min-h-screen flex flex-col text-white text-sm font-poppins scrollbar-thin scrollbar-track-gray-700 scrollbar-thumb-primary relative;
+}
+
+.padding-x {
+  @apply px-4 md:px-14 lg:px-24 xl:px-44;
+}
+
+.padding-x2 {
+  @apply px-4 md:px-14 lg:px-24 xl:px-80;
+}
+
+.bg-blur {
+  @apply backdrop-blur-lg backdrop-filter
+}
+
+#tidio-chat-iframe {
+  bottom: 70px !important
+}
+
+// .center {
+//   @layer mx-auto top-1/2 left-1/2 transform-translate-x-1/2 transform-translate-y-1/2;
+// }

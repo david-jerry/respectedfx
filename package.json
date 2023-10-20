@@ -1,0 +1,63 @@
+{
+  "name": "respectedfx",
+  "version": "0.1.1",
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@tailwindcss/aspect-ratio": "*",
+    "@tailwindcss/forms": "*",
+    "@tailwindcss/line-clamp": "*",
+    "@tailwindcss/typography": "*",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^9.1.2",
+    "concurrently": "^8.0.1",
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.5",
+    "node-sass-tilde-importer": "^1.0.2",
+    "pixrem": "^5.0.0",
+    "postcss": "^8.3.11",
+    "postcss-loader": "^7.0.2",
+    "postcss-preset-env": "^9.0.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^13.2.0",
+    "tailwind-scrollbar": "*",
+    "tailwind-scrollbar-hide": "*",
+    "tailwindcss": "*",
+    "webpack": "^5.65.0",
+    "webpack-bundle-tracker": "^2.0.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "scripts": {
+    "dev": "concurrently yarn:dev:*",
+    "build": "webpack --config webpack/prod.config.js",
+    "clear_sessions": "python manage.py clearsessions",
+    "migrate": "python manage.py makemigrations; python manage.py migrate",
+    "dev:webpack": "webpack serve --config webpack/dev.config.js",
+    "dev:django": "uvicorn config.asgi:application --host 0.0.0.0 --reload --reload-include '*.html'",
+    "dev:celery": "celery -A config.celery_app worker --loglevel=info"
+  },
+  "dependencies": {
+    "alpinejs": "^3.11.1",
+    "axios": "^0.27.2",
+    "daisyui": "^3.9.3",
+    "flowbite": "^1.5.4",
+    "htmx.org": "^1.7.0",
+    "izitoast": "^1.4.0",
+    "mailwind": "^2.2.0",
+    "particles.js": "^2.0.0",
+    "toastr": "^2.1.4"
+  }
+}

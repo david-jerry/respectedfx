@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="text-white bg-black w-screen min-h-screen md:h-screen py-16 padding-x relative padding-x">
+  <img class="z-0 absolute w-screen h-screen top-0 left-0 right-0 bottom-o" src="{% static 'images/particles.png' %}">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 w-full h-full">
+    <div class="flex flex-col items-center h-full justify-center">
+      <div class="space-y-6 pt-14">
+        <h1 class="font-jost font-semibold text-3xl md:text-4xl xl:text-6xl">Nigeria's No 1 trusted currency exchange
+          app</h1>
+        <p class="text-gray-300 text-base md:text-lg">Check exchange rates, send money internationally, Buy and sell
+          foreign currency in a way that has never been experienced before in Nigeria before and free exchange tools.
+        </p>
+
+        <div class="pt-14 flex items-center space-x-6 justify-center md:justify-normal">
+          <a href=""
+            class="w-fit flex-none flex items-center space-x-2 hover:space-x-6 group py-2 px-6 rounded-lg bg-primary text-black font-semibold">
+            <span class="flex">Download</span>
+
+            <span class="iconify flex" data-icon="icon-park:right"></span>
+          </a>
+          <a href="" class="py-2 px-6 rounded-lg border-2 border-primary text-primary font-semibold">
+            Exchange
+          </a>
+        </div>
+
+        <div
+          class="w-full divide-x-2 space-x-4 divide-primary py-4 flex items-center overflow-x-auto {% if not rates.count > 2 %}justify-center md:justify-normal{% endif %}">
+          {% for r in rates %}
+          <div class="py-4 w-32 text-center">
+            <strong class="block text-base font-semibold">{{r.foreign_currency_name|upper}}</strong>
+            <strong class="block font-bold text-primary text-xl">{{r.local_amount}}</strong>
+            <span
+              class="block text-xs {% if not r.last_rates.increased %}text-green-400{% else %}text-red-400{% endif %}">{{r.last_rates.percentage_change}}</span>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pt-8 md:pt-0 flex flex-col items-center h-full justify-center w-full">
+      <div class="mx-auto h-min">
+        <div
+          class="duration-300 relative md:absolute mx-auto md:top-1/3 md:left-2/3 md:transform-translate-x-1/2 md:transform-translate-y-1/2 w-[274px] h-[322px] rounded-xl border-white border-2">
+          <div class="bg-white/30 bg-blur rounded-xl shadow p-5 w-full md:max-w-2xl space-y-6 absolute -left-5 -top-5">
+            <h2 class="text-xl font-bold text-primary font-jost">Exchange Converter</h2>
+            <form class="space-y-4" x-data="{ amount: 1.00, localAmount: '{{first_amount}}', }">
+              <div>
+                <label for="pairs" class="block text-sm font-medium text-white">Currency</label>
+                <select id="pairs" name="pairs" x-model="localAmount"
+                  class="text-gray-700 mt-1 p-2 border border-gray-300 block w-full rounded-md">
+                  {% for pair in rates %}
+                  <option value="{{ pair.local_amount }}">{{ pair.foreign_currency_name|upper }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div>
+                <label for="amount" class="block text-sm font-medium text-white">Amount</label>
+                <input type="number" id="amount" name="amount" x-model="amount"
+                  @input="convertedValue = parseFloat((amount / localAmount).toFixed(2))"
+                  class="mt-1 p-2 border border-gray-300 block w-full text-black rounded-md" placeholder="Enter amount">
+              </div>
+              <div>
+                <label for="convertedValue" class="block text-sm font-medium text-white">(NGN) Converted Value</label>
+                <input type="number" id="convertedValue" name="convertedValue" x-model="parseFloat((amount * localAmount).toFixed(2))"
+                  class="mt-1 p-2 border border-gray-300 block w-full font-bold text-black rounded-md" readonly>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="padding-x w-screen py-8 bg-white/70 bg-blur text-black">
+  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+    <div class="text-center lg:w-2/3 w-full">
+      <h1 class="font-jost sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Integrity, Honesty, Accountability</h1>
+      <p class="mb-8 leading-relaxed text-base">At RespectedFX, these values form the core of our foundation. We believe
+        in providing
+        ethical and transparent financial services to help you achieve your goals.</p>
+      <div class="flex justify-center">
+        <a href="/about/"
+          class="inline-flex text-gray-700 font-jost bg-primary/50 border-0 py-2 px-6 focus:outline-none hover:bg-primary rounded text-lg">Learn
+          More</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white rounded-lg p-6 shadow-md card hover:scale-105 duration-300 ease-in-out">
+      <h2 class="text-2xl font-bold mb-4 font-jost">Integrity</h2>
+      <p class="text-gray-700">Integrity is the foundation of everything we do at RespectedFX. It's not just a word to
+        us - it's a way of life. We are committed to acting ethically and honestly in all of our dealings, both with our
+        clients and with each other. We believe that integrity is essential to building trust and maintaining long-term
+        relationships.</p>
+    </div>
+
+    <div class="bg-white rounded-lg p-6 shadow-md card hover:scale-105 duration-300 ease-in-out">
+      <h2 class="text-2xl font-bold mb-4 font-jost">Honesty</h2>
+      <p class="text-gray-700">Honesty is another core value at RespectedFX. We believe in being transparent and
+        trustworthy in everything we do. We are honest with our clients about our fees, our services, and the risks
+        involved in trading. We are also honest with our employees about their roles and responsibilities, and we
+        provide them with the training and support they need to succeed.</p>
+    </div>
+
+    <div class="bg-white rounded-lg p-6 shadow-md card hover:scale-105 duration-300 ease-in-out">
+      <h2 class="text-2xl font-bold mb-4 font-jost">Accountability</h2>
+      <p class="text-gray-700">We believe that accountability is essential for success. We hold ourselves accountable
+        for our actions and inactions, and we are committed to meeting our commitments to our clients. We are also
+        accountable to each other, and we work together to create a culture of excellence.</p>
+    </div>
+
+    <!-- Repeat the above card structure for other values -->
+
+  </div>
+</section>
+
+<section class="w-screen">
+  <iframe class="w-screen h-96" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+    src="https://maps.google.com/maps?q=H518%20Rd%203%2C%20Victoria%20garden%20City%20106104%2C%20Lagos&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near"
+    title="H518 Rd 3, Victoria garden City 106104, Lagos"
+    aria-label="H518 Rd 3, Victoria garden City 106104, Lagos"></iframe>
+</section>
+
+<section class="padding-x w-screen py-12 relative bg-blur bg-white/70 text-gray-700">
+  <img src="{% static 'images/stars.png' %}" alt="" class="object-cover w-screen h-full left-0 top-0 absolute">
+
+  <h2 class="text-3xl font-jost text-center">Press Release <a href="/blogs/"
+      class="relative block mx-auto text-primary text-center flex-none text-base font-bold pl-4">All Press Release</a>
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 pt-8">
+    {% for post in latest_posts %}
+    <div class="rounded-xl bg-gray-600 shadow reltaive">
+      <div
+        class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+        <a href="" class="block w-full h-full">
+          <img src="{{post.cover_photo.url}}" alt="" class="w-full h-full object-cover">
+        </a>
+        <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+          <h2 class="text-lg font-bold font-jost text-primary">{{post.title|title}}</h2>
+          <p class="text-xs mt-1">Published on: {{post.created|date:"M d, Y"}}</p>
+          <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">
+            {{post.content|safe|truncatewords:25}}.</p>
+          <a href="/blogs/{{post.slug}}/"
+            class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+            More</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="" class="block w-full h-full">
+        <img src="{% static 'images/blog/1.png' %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">Blog Post Title</h2>
+        <p class="text-xs mt-1">Published on: October 19, 2023</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+        <a href="#"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
+      </div>
+    </div>
+    <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="" class="block w-full h-full">
+        <img src="{% static 'images/blog/2.png' %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">Blog Post Title</h2>
+        <p class="text-xs mt-1">Published on: October 19, 2023</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+        <a href="#"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
+      </div>
+    </div>
+    <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="" class="block w-full h-full">
+        <img src="{% static 'images/blog/3.png' %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">Blog Post Title</h2>
+        <p class="text-xs mt-1">Published on: October 19, 2023</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+        <a href="#"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
+      </div>
+    </div>
+    <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="" class="block w-full h-full">
+        <img src="{% static 'images/blog/4.png' %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">Blog Post Title</h2>
+        <p class="text-xs mt-1">Published on: October 19, 2023</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+        <a href="#"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
+      </div>
+    </div>
+    <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="" class="block w-full h-full">
+        <img src="{% static 'images/blog/5.png' %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">Blog Post Title</h2>
+        <p class="text-xs mt-1">Published on: October 19, 2023</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+        <a href="#"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
+      </div>
+    </div>
+    <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="" class="block w-full h-full">
+        <img src="{% static 'images/blog/6.png' %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">Blog Post Title</h2>
+        <p class="text-xs mt-1">Published on: October 19, 2023</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+        <a href="#"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</section>
+{% endblock content %}

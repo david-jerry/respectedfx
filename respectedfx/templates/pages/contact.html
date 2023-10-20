@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact - Respected FX
+{% endblock title %}
+
+{% block content %}
+<section class="min-h-screen w-screen padding-x pt-24 pb-16">
+  <h2 class="font-jost text-3xl text-center pt-16">Request an audience</h2>
+  <p class="text-center max-w-2xl mx-auto">How can Respected FX assist your today? What ever your concerns are, please feel free to contact us today about your concerns and what you deeply would love to know about our services, mode of operation and delivery to you.</p>
+  <div class="pt-24 grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="h-[320px] w-full bg-white/20 bg-blur text-white rounded-xl p-5 justify-between flex-col flex">
+      <div class="">
+        <p class="text-base">
+          "The most interesting thing about Respected FX is the accountability whenever they transact with you. The interest taken to ensure you are served with the best possible is a must share. For me, Nigeria is ready for this change in fintech services."
+        </p>
+        <span class="flex font-semibold text-sm pt-3">Sir White</span>
+        <strong class="flex text-xs text-primary">SW Group of Companies</strong>
+      </div>
+
+      <div>
+        <p class="flex text-xs">
+          One of our core values at Respected FX is transparency. We carry you along throughout the entire process during transaction with no surprise cost or hidden charge. Respected FX is a bureau de change licensed by the Central Bank of Nigeria.
+        </p>
+      </div>
+    </div>
+
+    <div class="h-full w-full border-white/70 rounded-xl flex flex-col items-center justify-center">
+      <form class="mx-auto text-white rounded-lg">
+          <div class="grid grid-cols-2 gap-3 mb-6">
+          <div>
+              <label class="block  text-sm font-bold mb-2" for="name">Name</label>
+              <input class="w-full px-3 py-2 border border-gray-300 rounded" type="text" id="name" name="name"
+                  placeholder="Your Name">
+          </div>
+          <div>
+              <label class="block  text-sm font-bold mb-2" for="email">Email</label>
+              <input class="w-full px-3 py-2 border border-gray-300 rounded" type="email" id="email" name="email"
+                  placeholder="Your Email">
+          </div>
+          </div>
+          <div class="mb-6">
+              <label class="block  text-sm font-bold mb-2" for="message">Message</label>
+              <textarea class="w-full px-3 py-2 h-32 border border-gray-300 rounded" id="message" name="message"
+                  placeholder="Your Message"></textarea>
+          </div>
+          <div class="mb-6">
+              <button
+                  class="w-full bg-primary/40 text-white hover:bg-primary duration-300 hover:text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="button">
+                  Send Message
+              </button>
+          </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}

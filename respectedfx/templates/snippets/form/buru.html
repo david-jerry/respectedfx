@@ -1,0 +1,70 @@
+<dialog id="buru" class="modal bg-blur bg-current/50" x-data="{ activeTab: 'tab1' }">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Bureau De Change</h3>
+    <p class="py-4">Exchange your Foreign Currency for Local ones or Local Currencies for Foreign Currency</p>
+
+    <div class="flex">
+      <button class="bg-primary/40 text-white hover:bg-primary hover:text-black font-bold py-2 px-4 rounded-l focus:outline-none focus:shadow-outline"
+          :class="{ 'bg-primary text-black': activeTab === 'tab1', 'bg-primary/40 text-white': activeTab !== 'tab1'}" @click="activeTab = 'tab1'">Foreign Exchange</button>
+      <button class="bg-primary/40 text-white hover:bg-primary hover:text-black font-bold py-2 px-4 rounded-r focus:outline-none focus:shadow-outline"
+          :class="{ 'bg-primary text-black': activeTab === 'tab2', 'bg-primary/40 text-white': activeTab !== 'tab2'}" @click="activeTab = 'tab2'">Local Exchange</button>
+  </div>
+  <div x-show="activeTab === 'tab1'" class="mt-8">
+      <h2 class="text-sm font-bold mb-4 text-primary">Foreign Exchange</h2>
+      <form method="post" id="fx-request-form">
+        <input class="w-full text-black font-semibold text-sm" type="email" id="email" placeholder="Email" required><br><br>
+        <input type="hidden" name="to_currency" value="NGN" id="to_currency">
+        <select id="bank" required class="w-full text-black">
+            <option value="" disabled selected>Select Bank</option>
+            <!-- Add options dynamically using Django template or hardcode them here -->
+            {% for b in banks %}
+            <option value="1">{{b.bank_name}}</option>
+            {% endfor %}
+            <!-- Add more options as needed -->
+        </select><br><br>
+        <input class="w-full text-black font-semibold text-sm" type="number" id="amount" placeholder="Amount" required><br><br>
+        <select id="currency" required class="w-full text-black">
+            <option value="" disabled selected>Select Currency to Sell</option>
+            {% for r in rates %}
+            <option value="{{r.foreign_currency_name|upper}}">{{r.foreign_currency_name|upper}}</option>
+            {% endfor %}
+            <!-- Add more currency options as needed -->
+        </select><br><br>
+        <input class="w-full text-black font-semibold text-sm" type="text" id="account-number" placeholder="Account Number" required><br><br>
+        <input class="w-full text-black font-semibold text-sm" type="text" id="account-name" placeholder="Account Name" required><br><br>
+        <button class="bg-primary/40 hover:bg-primary text-white hover:text-black  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit">Submit Request</button>
+      </form>
+  </div>
+  <div x-show="activeTab === 'tab2'" class="mt-8">
+      <h2 class="text-sm font-bold mb-4 text-primary">Local Exchange</h2>
+      <form method="post" id="fx-local-request-form">
+        <input class="w-full text-black font-semibold text-sm" type="email" id="local_email" placeholder="Email" required><br><br>
+        <select id="local_bank" required class="w-full text-black">
+            <option value="" disabled selected>Select Bank</option>
+            <!-- Add options dynamically using Django template or hardcode them here -->
+            {% for b in banks %}
+            <option value="1">{{b.bank_name}}</option>
+            {% endfor %}
+            <!-- Add more options as needed -->
+        </select><br><br>
+        <input class="w-full text-black font-semibold text-sm" type="number" id="local_amount" required><br><br>
+        <input type="hidden" name="currency" id="local_currency" value="NGN">
+        <select id="local_to_currency" required class="w-full text-black">
+            <option value="" disabled selected>Select Currency to Buy</option>
+            {% for r in rates %}
+            <option value="{{r.foreign_currency_name|upper}}">{{r.foreign_currency_name|upper}}</option>
+            {% endfor %}
+            <!-- Add more currency options as needed -->
+        </select><br><br>
+        <input class="w-full text-black font-semibold text-sm" type="text" id="local_account-number" placeholder="Account Number" required><br><br>
+        <input class="w-full text-black font-semibold text-sm" type="text" id="local_account-name" placeholder="Account Name" required><br><br>
+          <button class="bg-primary/40 hover:bg-primary text-white hover:text-black  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit">Submit Request</button>
+      </form>
+  </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

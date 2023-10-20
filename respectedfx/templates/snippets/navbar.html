@@ -1,0 +1,27 @@
+{% load static %}
+
+<header class="z-50 fixed top-0 left-0 right-0 text-white w-screen padding-x py-4 bg-black/90 bg-blur flex items-center justify-between">
+  <a href="/">
+    <img src="{% static 'images/logo.png' %}" alt="Respected fc logo" class="h-9 md:h-12 filter grayscale hover:filter-none duration-300">
+  </a>
+
+  <nav class=" items-center space-x-8 hidden md:flex">
+    <button onclick="buru.showModal()" class="font-bold hover:text-primary duration-300 ease-in-out">Bureau De Change</button>
+    <button onclick="fx.showModal()" class="font-bold hover:text-primary duration-300 ease-in-out">International Transfer</button>
+    <button onclick="cry.showModal()" class="font-bold hover:text-primary duration-300 ease-in-out">Crypto Exchange</button>
+  </nav>
+
+  <div class="flex items-center space-x-4">
+    <a href="/" class="hover:scale-105 hover:text-primary duration-300 ease-in-out"><span class="iconify w-7 h-7" data-icon="solar:home-2-bold-duotone"></span></a>
+    {% if request.user.is_authenticated %}
+      <a title="Profile" class="block text-primary/50 hover:text-primary duration-300" href="{% url 'users:detail' request.user.pk %}"><span class="iconify w-7 h-7" data-icon="iconamoon:profile-fill"></span></a>
+      {# URL provided by django-allauth/account/urls.py #}
+      <a title="Logout" class="block text-red-400 hover:text-danger duration-300" href="{% url 'account_logout' %}"><span class="iconify w-7 h-7" data-icon="solar:logout-2-bold-duotone"></span></a>
+    {% else %}
+      {% if ACCOUNT_ALLOW_REGISTRATION %}
+        <a title="Register" id="sign-up-link" class="block hover:scale-105 duration-300 ease-in-out" href="{% url 'account_signup' %}"><span class="iconify w-7 h-7" data-icon="mdi:account-lock-outline"></span></a>
+        <a title="Login" id="log-in-link" class="block hover:scale-105 duration-300 ease-in-out" href="{% url 'account_login' %}"><span class="iconify w-7 h-7" data-icon="uim:signin"></span></a>
+        {% endif %}
+    {% endif %}
+  </div>
+</header>
