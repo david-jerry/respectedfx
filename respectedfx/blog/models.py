@@ -9,7 +9,7 @@ from respectedfx.newsletter.tasks import send_newsletter_mails
 # Create your models here.
 class Category(TimeStampedModel):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -20,7 +20,7 @@ class Category(TimeStampedModel):
 
 class Tag(TimeStampedModel):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
