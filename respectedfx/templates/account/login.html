@@ -8,14 +8,14 @@
   {% translate "Sign In" %}
 {% endblock head_title %}
 {% block inner %}
-  <h1>{% translate "Sign In" %}</h1>
+  <h1 class="mb-3 font-jost text-2xl font-bold text-primary">{% translate "Sign In" %}</h1>
   {% get_providers as socialaccount_providers %}
   {% if socialaccount_providers %}
-    <p>
+    <p class="text-sm">
       {% translate "Please sign in with one of your existing third party accounts:" %}
       {% if ACCOUNT_ALLOW_REGISTRATION %}
         {% blocktranslate trimmed %}
-          Or, <a href="{{ signup_url }}">sign up</a>
+          Or, <a class="text-primary" href="{{ signup_url }}">sign up</a>
           for a {{ site_name }} account and sign in below:
         {% endblocktranslate %}
       {% endif %}
@@ -29,15 +29,15 @@
     {% include "socialaccount/snippets/login_extra.html" %}
   {% else %}
     {% if ACCOUNT_ALLOW_REGISTRATION %}
-      <p>
+      <p class="text-sm">
         {% blocktranslate trimmed %}
           If you have not created an account yet, then please
-          <a href="{{ signup_url }}">sign up</a> first.
+          <a class="text-primary" href="{{ signup_url }}">sign up</a> first.
         {% endblocktranslate %}
       </p>
     {% endif %}
   {% endif %}
-  <form class="login" method="post" action="{% url 'account_login' %}">
+  <form class="text-white login space-y-4" method="post" action="{% url 'account_login' %}">
     {% csrf_token %}
     {{ form|crispy }}
     {% if redirect_field_value %}
@@ -45,8 +45,8 @@
              name="{{ redirect_field_name }}"
              value="{{ redirect_field_value }}" />
     {% endif %}
-    <a class="button secondaryAction"
+    <a class="button block text-primary text-sm secondaryAction"
        href="{% url 'account_reset_password' %}">{% translate "Forgot Password?" %}</a>
-    <button class="primaryAction btn btn-primary" type="submit">{% translate "Sign In" %}</button>
+    <button class="block w-full bg-primary text-black primaryAction btn btn-primary" type="submit">{% translate "Sign In" %}</button>
   </form>
 {% endblock inner %}

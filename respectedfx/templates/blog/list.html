@@ -1,11 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 Press - Respected FX
 {% endblock title %}
 
 {% block content %}
-<section class="min-h-screen padding-x">
-
+<section class="pt-24 w-screen min-h-screen padding-x grid grid-cols-1 md:grid-cols-3">
+  {% for post in objects  %}
+  <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="/blogs/{{post.slug}}/" class="block w-full h-full">
+        <img src="{% if post.cover_photo %}{{post.cover_photo.url}}{% else %}{% static 'images/blog/1.png' %}{% endif %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">{{post.title|title}}</h2>
+        <p class="text-xs mt-1">Published on: {{post.created|date:"M d, Y"}}</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          {{post.content|safe|truncatewords:25}}</p>
+        <a href="/blogs/{{post.slug}}/"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
+      </div>
+    </div>
+  {% empty %}
+    <div class="col-span-1 md:col-span-3 w-full h-full flex flex-col items-center justify-center">
+      <p class="text-center p-4 rounded-md bg-white/30 bg-blur">There is currenctly no post</p>
+    </div>
+  {% endfor %}
 </section>
 {% endblock content %}

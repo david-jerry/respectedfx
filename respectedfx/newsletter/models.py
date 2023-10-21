@@ -28,12 +28,11 @@ class NewsMail(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)  # Call the save method of the superclass
-        attachment = {
-            "filepath": self.attachment.url,
-            "filename": "attachment.pdf"
-        }
-        recipients_emails = self.recipients.filter(active=True).values_list('email', flat=True)
+        filepath = self.attachment.url
+        filename = "attachment.pdf"
+
+        recipients_emails = [subscriber.email for subscriber in self.recipients.filter(active=True)]
         LOGGER.info(recipients_emails)
         # Call the Celery task to send emails to all recipients
-        send_newsletter_mails.delay(recipients_emails, self.subject, self.message, attachment)
+        send_newsletter_mails.delay(recipients_emails, self.subject, self.message, filepath, filename)
 

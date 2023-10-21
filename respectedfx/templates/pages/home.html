@@ -138,21 +138,19 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 pt-8">
     {% for post in latest_posts %}
-    <div class="rounded-xl bg-gray-600 shadow reltaive">
-      <div
-        class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
-        <a href="" class="block w-full h-full">
-          <img src="{{post.cover_photo.url}}" alt="" class="w-full h-full object-cover">
-        </a>
-        <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
-          <h2 class="text-lg font-bold font-jost text-primary">{{post.title|title}}</h2>
-          <p class="text-xs mt-1">Published on: {{post.created|date:"M d, Y"}}</p>
-          <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">
-            {{post.content|safe|truncatewords:25}}.</p>
-          <a href="/blogs/{{post.slug}}/"
-            class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
-            More</a>
-        </div>
+    <div
+      class="cursor-pointer group transition-opacity duration-300 ease-in-out rounded-xl bg-gray-600/20 bg-blur shadow relative h-64 md:h-96 overflow-hidden">
+      <a href="/blogs/{{post.slug}}/" class="block w-full h-full">
+        <img src="{% if post.cover_photo %}{{post.cover_photo.url}}{% else %}{% static 'images/blog/1.png' %}{% endif %}" alt="" class="w-full h-full object-cover">
+      </a>
+      <div class="absolute w-full bottom-0 left-0 bg-gray-700/60 bg-blur text-white p-3">
+        <h2 class="text-lg font-bold font-jost text-primary">{{post.title|title}}</h2>
+        <p class="text-xs mt-1">Published on: {{post.created|date:"M d, Y"}}</p>
+        <p class="text-sm mt-2 hidden group-hover:block transition duration-300 ease-in-out">Lorem ipsum dolor sit amet,
+          {{post.content|safe|truncatewords:8}}</p>
+        <a href="/blogs/{{post.slug}}/"
+          class="text-primary text-xs font-semibold mt-4 hidden group-hover:block transition duration-300 ease-in-out">Read
+          More</a>
       </div>
     </div>
     {% empty %}

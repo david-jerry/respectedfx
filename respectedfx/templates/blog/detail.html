@@ -1,11 +1,55 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 {{object.title|title}} - Respected FX
 {% endblock title %}
 
 {% block content %}
-<section class="min-h-screen padding-x">
+<section class="min-h-screen padding-x w-screen pt-24">
+  <div class="space-y-2">
+    <div class="py-6 px-4">
+      <div class="container mx-auto">
+        <div class="flex flex-wrap -mx-2">
+          {% for category in object.categories.all %}
+            <div class="px-2 mb-2 bg-gray-600/40 bg-blur rounded-md text-white">
+              <button class="inline-block text-white px-3 py-1 rounded">{{ category.name }}</button>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
 
+    <div class="container mx-auto my-8">
+      <img src="{{ object.cover_photo.url }}" alt="{{ object.title }}" class="my-4 w-full max-h-64 object-cover object-center rounded-lg" />
+
+      <div class="prose min-w-full">
+        <h1 class="text-3xl font-semibold font-jost">{{ object.title }}</h1>
+        <p class="text-primary font-jost text-sm">{{ object.created }}</p>
+        {{ object.content|safe }}
+      </div>
+
+      <hr class="my-8">
+
+      <div class="flex justify-between my-4">
+        <a href="{% if object.previous_post %}/blogs/{{object.previous_object.slug}}/{% else %}javascript:;{% endif %}" class="{% if object.previous_post %}text-yellow-500 hover:text-yellow-600{% endif %}">&LeftArrow; Previous Post</a>
+
+        <a href="{% if object.next_post %}/blogs/{{object.next_object.slug}}/{% else %}javascript:;{% endif %}" class="{% if object.next_post %}text-yellow-500 hover:text-yellow-600{% endif %}">Next Post &RightArrow;</a>
+      </div>
+
+      <hr class="my-8">
+
+      {% if object.get_related_posts %}
+      <h2 class="text-2xl font-semibold my-6">Similar Posts</h2>
+      <div class="flex flex-wrap -mx-2">
+        {% for related_post in object.get_related_posts %}
+          <div class="px-2 mb-2">
+            <a href="/blogs/{{related_object.slug}}/" class="inline-block bg-gray-300 text-black px-3 py-1 rounded">{{ related_object.title }}</a>
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </section>
 {% endblock content %}

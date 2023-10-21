@@ -6,15 +6,15 @@
   {% translate "Sign Out" %}
 {% endblock head_title %}
 {% block inner %}
-  <h1>{% translate "Sign Out" %}</h1>
-  <p>{% translate "Are you sure you want to sign out?" %}</p>
-  <form method="post" action="{% url 'account_logout' %}">
+  <h1 class="font-jost text-2xl font-bold text-primary mb-3">{% translate "Sign Out" %}</h1>
+  <p class="text-sm">{% translate "Are you sure you want to sign out?" %}</p>
+  <form class="space-y-4 text-white" method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
     {% if redirect_field_value %}
       <input type="hidden"
              name="{{ redirect_field_name }}"
              value="{{ redirect_field_value }}" />
     {% endif %}
-    <button class="btn btn-danger" type="submit">{% translate "Sign Out" %}</button>
+    <button class="block w-full bg-primary text-black btn btn-danger" type="submit">{% translate "Sign Out" %}</button>
   </form>
 {% endblock inner %}

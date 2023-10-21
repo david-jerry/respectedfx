@@ -3,6 +3,7 @@ from django.utils.text import slugify
 
 from model_utils.models import TimeStampedModel
 from tinymce.models import HTMLField
+from respectedfx.newsletter.models import Newsletter
 
 from respectedfx.newsletter.tasks import send_newsletter_mails
 
@@ -46,19 +47,25 @@ class Post(TimeStampedModel):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-        attachment = {
-            "filepath": self.cover_photo.url,
-            "filename": f"{self.slug}.jpg"
-        } if self.cover_photo.url else None
-        recipients_emails = self.recipients.filter(active=True, blog=True).values_list('email', flat=True)
+        filepath = "http://localhost:3000" + self.cover_photo.url if self.cover_photo.url else None
+        filename = f"{self.slug}.jpg" if self.cover_photo.url else None
+
+        recipients_emails = [subscriber.email for subscriber in Newsletter.objects.filter(active=True)]
 
         # Call the Celery task to send emails to all recipients
-        send_newsletter_mails.delay(recipients_emails, self.subject, self.message, attachment)
+        send_newsletter_mails.delay(recipients_emails, self.title, self.content)
 
+    @property
+    def get_previous_post(self):
+        return Post.objects.filter(id__lt=self.id).order_by('-id').first()
+
+    @property
+    def get_next_post(self):
+        return Post.objects.filter(id__gt=self.id).order_by('id').first()
 
     @classmethod
     def get_latest_posts(cls, limit=6):
-        return cls.objects.order_by('-created_at')[:limit] or []
+        return cls.objects.order_by('-created')[:limit] or []
 
     @property
     def get_related_posts(self, limit=3):

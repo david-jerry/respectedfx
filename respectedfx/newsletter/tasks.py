@@ -8,5 +8,5 @@ from respectedfx.utils.emails import send_email
 # }
 
 @shared_task(bind=True)
-def send_newsletter_mails(self, to_email, subject, body, attachment=None):
-    send_email(to_email, subject, body, attachment)
+def send_newsletter_mails(self, to_email, subject, body, filepath=None, filename=None):
+    send_email(to_email, subject, body, filepath, filename)

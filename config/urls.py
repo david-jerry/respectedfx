@@ -10,6 +10,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
 from config.sitemaps import StaticViewSitemap
+from respectedfx.blog.views import PostDetailView, PostListView
 from respectedfx.fxrates.views import create_fx_request, create_fx_local_request, create_internationa_transfer_request
 from respectedfx.newsletter.views import apply_news_letter
 sitemaps = {
@@ -24,13 +25,16 @@ urlpatterns = [
     path("terms/", TemplateView.as_view(template_name="legal/terms_of_use.html"), name="terms"),
     path("privacy/", TemplateView.as_view(template_name="legal/privacy_policy.html"), name="privacy"),
     path("cookie/", TemplateView.as_view(template_name="legal/cookie_policy.html"), name="cookie"),
+    path("blogs/", PostListView.as_view(), name="post_List"),
+    path("blogs/<slug>/", PostDetailView.as_view(), name="post_Detail"),
+
 
     path('create_fx_request/', create_fx_request, name='create_fx_request'),
     path('create_fx_local_request/', create_fx_local_request, name='create_fx_local_request'),
     path('create_internationa_transfer_request/', create_internationa_transfer_request, name="create_internationa_transfer_request"),
     path('apply_news_letter/', apply_news_letter, name="apply_news_letter"),
 
-    
+
     # Django Admin, use {% url 'admin:index' %}
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS

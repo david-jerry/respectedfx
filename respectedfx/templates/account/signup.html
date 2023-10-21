@@ -7,21 +7,21 @@
   {% translate "Signup" %}
 {% endblock head_title %}
 {% block inner %}
-  <h1>{% translate "Sign Up" %}</h1>
-  <p>
-    {% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}
-  </p>
-  <form class="signup"
-        id="signup_form"
-        method="post"
-        action="{% url 'account_signup' %}">
-    {% csrf_token %}
-    {{ form|crispy }}
-    {% if redirect_field_value %}
-      <input type="hidden"
-             name="{{ redirect_field_name }}"
-             value="{{ redirect_field_value }}" />
-    {% endif %}
-    <button class="btn btn-primary" type="submit">{% translate "Sign Up" %} »</button>
-  </form>
+<h1 class="font-jost text-2xl font-bold text-primary">{% translate "Sign Up" %}</h1>
+<p class="text-sm">
+  {% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}" class="text-primary font-semibold">sign in</a>.{% endblocktranslate %}
+</p>
+<form class="space-y-4 signup pt-4"
+      id="signup_form"
+      method="post"
+      action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+    <input type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="btn btn-primary bg-primary text-black mt-4 w-full" type="submit">{% translate "Sign Up" %} »</button>
+</form>
 {% endblock inner %}

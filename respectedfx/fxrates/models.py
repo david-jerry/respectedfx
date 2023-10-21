@@ -66,12 +66,11 @@ class FXRequest(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)  # Call the save method of the superclass
-        attachment = None
         recipients_emails = ["info@respectedfx.com"]
         body = f"""A new request to exchange {self.amount}{self.currency.upper()} to {self.to_currency.upper()} has been made by {self.email}, please proceed and send an email back to them when this is complete."""
 
         # Call the Celery task to send emails to all recipients
-        send_newsletter_mails.delay(recipients_emails, "New Exchange Request", body, attachment)
+        send_newsletter_mails.delay(recipients_emails, "New Exchange Request", body)
 
 
 class FXTransferRequest(TimeStampedModel):
@@ -88,11 +87,10 @@ class FXTransferRequest(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)  # Call the save method of the superclass
-        attachment = None
         recipients_emails = ["info@respectedfx.com"]
         body = f"""A new request to transfer {self.amount}{self.currency.upper()} to {self.to_currency.upper()} has been made by {self.email}, please proceed and send an email back to them when this is complete."""
 
         # Call the Celery task to send emails to all recipients
-        send_newsletter_mails.delay(recipients_emails, "International Transfer Request", body, attachment)
+        send_newsletter_mails.delay(recipients_emails, "International Transfer Request", body)
 
 

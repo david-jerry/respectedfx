@@ -217,6 +217,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "respectedfx.users.context_processors.allauth_settings",
                 "respectedfx.fxrates.context_processors.exchange_rates",
+                "respectedfx.blog.context_processors.posts",
             ],
         },
     }
