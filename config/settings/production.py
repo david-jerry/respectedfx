@@ -83,6 +83,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # ------------------------------------------------------------------------------
 DEFAULT_FILE_STORAGE = "respectedfx.utils.storages.MediaS3Storage"
 MEDIA_URL = f"https://{aws_s3_domain}/media/"
+PRIVATE_FILE_STORAGE = "respectedfx.utils.storages.PrivateMediaS3Storage"
+PRIVATE_MEDIA_URL = f"https://{aws_s3_domain}/private/"
 
 # EMAIL
 # ------------------------------------------------------------------------------
@@ -111,11 +113,23 @@ INSTALLED_APPS += ["anymail"]  # noqa: F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 # https://anymail.readthedocs.io/en/stable/esps/sendgrid/
-EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
-ANYMAIL = {
-    "SENDGRID_API_KEY": env("SENDGRID_API_KEY", default=None),
-    "SENDGRID_API_URL": env("SENDGRID_API_URL", default="https://api.sendgrid.com/v3/"),
-}
+SENDGRID_MAIL = env("USE_SENDGRID", default=False)
+
+if SENDGRID_MAIL:
+    EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
+    ANYMAIL = {
+        "SENDGRID_API_KEY": env("SENDGRID_API_KEY", default=None),
+        "SENDGRID_API_URL": env("SENDGRID_API_URL", default="https://api.sendgrid.com/v3/"),
+    }
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    ANYMAIL = {}
+
+    EMAIL_HOST = env('EMAIL_HOST', default="server265-4.web-hosting.com ")
+    EMAIL_HOST_USER = env("EMAIL_USER", default="email@user.tld")
+    EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD", default="password")
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
 
 
 # LOGGING

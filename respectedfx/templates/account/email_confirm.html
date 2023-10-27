@@ -8,16 +8,16 @@
 {% endblock head_title %}
 
 {% block inner %}
-  <h1>{% translate "Confirm E-mail Address" %}</h1>
+  <h1 class="font-jost font-semibold text-3xl mb-4">{% translate "Confirm E-mail Address" %}</h1>
   {% if confirmation %}
     {% user_display confirmation.email_address.user as user_display %}
     <p>
-      {% blocktranslate with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktranslate %}
+      {% blocktranslate with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}" class="font-bold duration-300 ease-in-out hover:text-primary">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktranslate %}
     </p>
-    <form method="post"
+    <form class="pt-8" method="post"
           action="{% url 'account_confirm_email' confirmation.key %}">
       {% csrf_token %}
-      <button class="btn btn-primary" type="submit">{% translate "Confirm" %}</button>
+      <button class="btn btn-primary bg-primary/50 text-white w-full hover:bg-primary hover:text-black" type="submit">{% translate "Confirm" %}</button>
     </form>
   {% else %}
     {% url 'account_email' as email_url %}
