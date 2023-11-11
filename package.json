@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.11.1",
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "daisyui": "^3.9.3",
     "flowbite": "^1.5.4",
     "htmx.org": "^1.7.0",
