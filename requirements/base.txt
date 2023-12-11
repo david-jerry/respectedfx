@@ -29,7 +29,7 @@ reportlab==4.0.6
 readtime==1.1.1
 django-admin-honeypot-advanced==1.0.1
 django-4-jet==1.0.9
-feedparser==6.0.8
+feedparser==6.0.11
 google-api-python-client==1.4.1
 django-crontab==0.7.1
 django-mathfilters==1.0.0
